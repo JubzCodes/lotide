@@ -1,14 +1,18 @@
-const assertEqual = require('../assertEqual');
-const tail = require('../tail');
 
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-const words2 = ["coding", "from", "home"]
-const words3 = ["learning", "new", "skills"]
+const assert = require('chai').assert;
+const tail   = require('../tail');
 
-tail(words);
-tail(words2);
-tail(words3);
+describe("#tail", () => {
+  it("returns [Lighthouse, Labs] for [Yo Yo, Lighthouse, Labs]", () => {
+    assert.deepEqual(tail(["Yo Yo", "Lighthouse", "Labs"]), ["Lighthouse", "Labs"]);
+  });
 
-assertEqual(words,words);
-assertEqual(words2,words2);
-assertEqual(words3,words3);
+    it("returns [from, home] for [coding, from, home]", () => {
+    assert.deepEqual(tail(["coding", "from", "home"]), ["from", "home"]); 
+  });
+
+  it("it returns [new, skills] for [learning, new, skills]", () => {
+    assert.deepEqual(tail(["learning", "new", "skills"]), ["new", "skills"])
+  });
+
+});
